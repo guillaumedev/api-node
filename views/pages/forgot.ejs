@@ -1,0 +1,24 @@
+<% include ../partials/head %>
+<div>
+    <div>
+      <h1>Reset password</h1>
+      <!-- show any messages that come back with authentication -->
+      <% if (message.length > 0) { %>
+        <div><%= message %></div>
+      <% } %>
+
+      <!-- LOGIN FORM -->
+      <form action="/users/forgot" method="post">
+        <div>
+          <label>Email</label>
+          <input type="text" name="email">
+        </div>
+        <button type="submit">Reset Password</button>
+      </form>
+      <hr>
+      <p>Go <a href="/">home</a>.</p><br>
+      <a href="/users/login">Local Signin</a><br>
+      <a href="/users/signup">Local Signup</a><br>
+      <a href="/users/profile">Profile</a><br>
+      <a href="/users/logout">Logout</a>
+<% include ../partials/footer %>

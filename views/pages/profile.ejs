@@ -1,0 +1,106 @@
+<% include ../partials/head %>
+  <div>
+    <div>
+      <h1>Profile Page</h1>
+      <!-- show any messages that come back with authentication -->
+      <% if (message.length > 0) { %>
+        <div><%= message %></div>
+      <% } %>
+      <a href="/users/logout">Logout</a>
+    </div>
+
+    <div>
+      <!-- LOCAL INFORMATION -->
+      <div>
+        <div>
+          <h3>Local</h3>
+          <% if (user.username) { %>
+            <p>
+              <strong>username</strong>: <%= user.username %><br>
+              <strong>email</strong>: <%= user.email %><br>
+              <strong>password</strong>: <%= user.password %>
+            </p>
+
+            <form action="/users/profile" method="post">
+              <div>
+                <label>Actual password</label>
+                <input type="password" name="password">
+              </div>
+              <div>
+                <label>New password</label>
+                <input type="password" name="newpassword">
+              </div>
+              <div>
+                <label>Confirm new password</label>
+                <input type="password" name="confirm">
+              </div>
+              <button type="submit">Update Password</button>
+            </form>
+
+            <a href="/users/unlink/local">Unlink</a>
+          <% } else { %>
+            <a href="/users/connect/local">Connect Local</a>
+          <% } %>
+        </div>
+      </div>
+      <!-- FACEBOOK INFORMATION -->
+      <div>
+        <div>
+          <h3>Facebook</h3>
+          <% if (user.facebookToken) { %>
+            <p>
+              <strong>name</strong>: <%= user.facebookName %><br>
+              <strong>email</strong>: <%= user.facebookEmail %><br>
+              <strong>id</strong>: <%= user.facebookId %><br>
+              <strong>token</strong>: <%= user.facebookToken %><br>
+            </p>
+            <a href="/users/unlink/facebook">Unlink</a>
+          <% } else { %>
+            <a href="/users/connect/facebook">Connect Facebook</a>
+          <% } %>
+        </div>
+      </div>
+      <!-- GOOGLE INFORMATION -->
+      <div>
+        <div>
+          <h3>Google</h3>
+          <% if (user.googleToken) { %>
+            <p>
+              <strong>name</strong>: <%= user.googleName %><br>
+              <strong>email</strong>: <%= user.googleEmail %><br>
+              <strong>id</strong>: <%= user.googleId %><br>
+              <strong>token</strong>: <%= user.googleToken %><br>
+            </p>
+            <a href="/users/unlink/google">Unlink</a>
+          <% } else { %>
+            <a href="/users/connect/google">Connect Google</a>
+          <% } %>
+        </div>
+      </div>
+      <!-- TWITTER INFORMATION -->
+      <div>
+        <div>
+          <h3>Twitter</h3>
+          <% if (user.twitterToken) { %>
+            <p>
+              <strong>username</strong>: <%= user.twitterUsername %><br>
+              <strong>displayName</strong>: <%= user.twitterDisplayName %><br>
+              <strong>id</strong>: <%= user.twitterId %><br>
+              <strong>token</strong>: <%= user.twitterToken %><br>
+            </p>
+            <a href="/users/unlink/twitter">Unlink</a>
+          <% } else { %>
+            <a href="/users/connect/twitter">Connect Twitter</a>
+          <% } %>
+        </div>
+      </div>
+      <p>------------------------</p>
+      <a href="/users/delete">Delete my account</a>
+      <p>------------------------</p>
+      <a href="/">Home</a><br>
+      <a href="/users/login">Local Login</a><br>
+      <a href="/users/signup">Local Signup</a><br>
+      <a href="/users/profile">Profile</a>
+    </div>
+  </div>
+<% include ../partials/footer %>

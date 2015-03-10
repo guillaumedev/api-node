@@ -8,10 +8,10 @@
     "port": 3306
   },
   "test": {
-    "username": "b782883da49b34",
-    "password": "ff3c4ecd",
-    "database": "heroku_2091d73f3ac7bed",
-    "host": "us-cdbr-iron-east-01.cleardb.net",
+    "username": "b97b70b106f463",
+    "password": "1c2d34b0",
+    "database": "heroku_9d21527b234f657",
+    "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
   },
   "production": {

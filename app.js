@@ -6,7 +6,6 @@ var app = express();
 var init = require('./bin/www'); // contains database configuation with orm sequelize.js
 var path = require('path');
 var passport = require('passport');
-var flash = require('connect-flash');
 
 var dotenv = require('dotenv');
 dotenv.load();
@@ -49,7 +48,7 @@ require('./config/passport')(passport, flash); // pass passport for configuratio
 // PASSPORT REQUIRED =======================
 // =========================================
 app.use(session({
-  secret: 'play2meetyou',
+  secret: 'boxstory',
   cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 },
   resave: true,
   saveUninitialized: true
@@ -64,12 +63,6 @@ app.use(flash());
 //require('./routes/index.js')(app, passport);
 app.use('/', routes);
 app.use('/users', users);
-
-// =========================================
-// VIEWS ===================================
-// =========================================
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs'); // set up ejs for templating
 
 // =========================================
 // 404 & ERROR =============================

@@ -16,12 +16,6 @@ module.exports = {
         type: DataTypes.STRING,
         unique: true
       },
-      nbVictory: {
-        type: DataTypes.INTEGER
-      },
-      nbDefeat: {
-        type: DataTypes.INTEGER
-      },
       inscriptionDate: {
         type: DataTypes.DATE
       },
@@ -35,12 +29,6 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       level: {
-        type: DataTypes.INTEGER
-      },
-      meetcoins: {
-        type: DataTypes.INTEGER
-      },
-      numMeeter: {
         type: DataTypes.INTEGER
       },
       connected: {

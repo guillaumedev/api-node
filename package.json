@@ -1,5 +1,5 @@
 {
-  "name": "Play2MeetYou",
+  "name": "BoxStory",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "debug": "node-debug ./bin/www",
     "nodemon": "nodemon ./bin/www"
   },
-  "description": "Play2MeetYou mobile app",
-  "author": "<playtomeetyou@gmail.com>",
+  "description": "BoxStory mobile app",
+  "author": "<boxstory@gmail.com>",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt-nodejs": "0.0.3",

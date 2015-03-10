@@ -6,14 +6,6 @@ var Sequelize = require("sequelize");
 var models = require('../models');
 var User = models.sequelize.import('../../../models/user');
 
-//route middleware to make sure a user is logged in
-exports.isLoggedIn = function(req, res, next) {
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-        // if they aren't redirect them to the home page
-        res.redirect('/');
-    };
 
 // unlink local method - remove email, username & password
 exports.unlinkLocal = function(req, res) {
@@ -234,44 +226,7 @@ exports.deleteAccount = function(req, res, done) {
     })
 }
 
-exports.updateNumMeeter = function(req, res, done) {
-    User.findOne({ where: { id: req.body.userId }}).success(function(user) {
-        if (!user) {
-            res.send({erreur:"ERREUR"});
-        }
-        else if(user){
-            user
-            .updateAttributes({
-                numMeeter: req.body.nMeeter
-            })
-            .complete(function(err, user) {
-                if (err)
-                    throw err;
-                res.send({done:"DONE"});
-            });
-        }
-        else{
-            res.send({erreur:"ERREUR"});
-        }
-    });
-}
 
-exports.retrieveMeeters = function(req, res, done){
-    models.sequelize.query('SELECT id from meeters where publicMeeter != 0').success(function(myTableRows) {
-        var meetersArray = [];
-        for (var meeter in myTableRows) {
-            var value = myTableRows[meeter];
-            meetersArray.push(value);
-        }
-        res.send(meetersArray);
-    });
-
-    //res.send({erreur:"ERREUR"});
-}
-
-exports.cronTableDefy = function(req, res, done){
-     models.sequelize.query('delete from defy where createdAt < ADDTIME(now(), \'-12:00:00\')');
-}
 
 exports.saveMail = function(req, res, done){
     console.log(req.body.mail);

@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // =========================================
 // BOOTSTRAP PASSPORT CONFIG ===============
 // =========================================
-require('./config/passport')(passport, flash); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
 
 // =========================================
 // PASSPORT REQUIRED =======================
@@ -55,7 +55,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 // =========================================
 // ROUTES ==================================

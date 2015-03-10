@@ -4,7 +4,7 @@ var crypto = require('crypto');
 // load up the user model
 var Sequelize = require("sequelize");
 var models = require('../models');
-var User = models.sequelize.import('../../../models/user');
+//var User = models.sequelize.import('../../../models/user');
 
 
 // unlink local method - remove email, username & password
@@ -15,48 +15,6 @@ exports.unlinkLocal = function(req, res) {
         username: null,
         email: null,
         password: null
-    })
-    .complete(function(err, user) {
-        if (err)
-            throw err;
-        res.redirect('/users/profile');
-    })
-};
-
-// unlink facebook method - remove token
-exports.unlinkFacebook = function(req, res) {
-    var user = req.user;
-    user
-    .updateAttributes({
-        facebookToken: null,
-    })
-    .complete(function(err, user) {
-        if (err)
-            throw err;
-        res.redirect('/users/profile');
-    })
-};
-
-// unlink google method - remove token
-exports.unlinkGoogle = function(req, res) {
-    var user = req.user;
-    user
-    .updateAttributes({
-        googleToken: null,
-    })
-    .complete(function(err, user) {
-        if (err)
-            throw err;
-        res.redirect('/users/profile');
-    })
-};
-
-// unlink twitter method - remove token
-exports.unlinkTwitter = function(req, res) {
-    var user = req.user;
-    user
-    .updateAttributes({
-        twitterToken: null,
     })
     .complete(function(err, user) {
         if (err)

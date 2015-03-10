@@ -76,72 +76,6 @@ router.route('/reset/:token')
 
 
 // =====================================
-// FACEBOOK ROUTES =====================
-// =====================================
-// route for facebook authentication and login
-router.route('/auth/facebook')
-  .get(
-    passport.authenticate('facebook', {
-      scope : 'email'
-    })
-  );
-
-// handle the callback after facebook has authenticated the user
-router.route('/auth/facebook/callback')
-  .get(
-    passport.authenticate('facebook', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/',
-      failureFlash : true,
-      successFlash: true
-    })
-  );
-
-// =====================================
-// GOOGLE ROUTES =======================
-// =====================================
-// send to google to do the authentication
-// profile gets us their basic information including their name
-// email gets their emails
-router.route('/auth/google')
-  .get(
-    passport.authenticate('google', {
-      scope : ['profile', 'email']
-    })
-  );
-
-// the callback after google has authenticated the user
-router.route('/auth/google/callback')
-  .get(
-    passport.authenticate('google', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/',
-      failureFlash : true,
-      successFlash: true
-    })
-  );
-
-// =====================================
-// TWITTER ROUTES ======================
-// =====================================
-// route for twitter authentication and login
-router.route('/auth/twitter')
-  .get(
-    passport.authenticate('twitter')
-  );
-
-// handle the callback after twitter has authenticated the user
-router.route('/auth/twitter/callback')
-  .get(
-    passport.authenticate('twitter', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/',
-      failureFlash : true,
-      successFlash: true
-    })
-  );
-
-// =====================================
 // DELETE ==============================
 // =====================================
 router.route('/delete')
@@ -177,60 +111,6 @@ router.route('/connect/local')
     })
   );
 
-// facebook -------------------------------
-// send to facebook to do the authentication
-router.route('/connect/facebook')
-  .get(
-    passport.authorize('facebook', {
-      scope : 'email'
-    })
-  );
-
-// handle the callback after facebook has authorized the user
-router.route('/connect/facebook/callback')
-  .get(
-    passport.authorize('facebook', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/'
-    })
-  );
-
-// twitter --------------------------------
-// send to twitter to do the authentication
-router.route('/connect/twitter')
-  .get(
-    passport.authorize('twitter', {
-      scope : 'email'
-    })
-  );
-
-// handle the callback after twitter has authorized the user
-router.route('/connect/twitter/callback')
-  .get(
-    passport.authorize('twitter', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/'
-    })
-  );
-
-// google ---------------------------------
-// send to google to do the authentication
-router.route('/connect/google')
-  .get(
-    passport.authorize('google', {
-      scope : ['profile', 'email']
-    })
-  );
-
-// the callback after google has authorized the user
-router.route('/connect/google/callback')
-  .get(
-    passport.authorize('google', {
-      successRedirect : '/users/profile',
-      failureRedirect : '/'
-    })
-  );
-
 // =============================================================================
 // UNLINK ACCOUNTS =============================================================
 // =============================================================================
@@ -242,17 +122,6 @@ router.route('/connect/google/callback')
 router.route('/unlink/local')
   .get(userController.unlinkLocal);
 
-// facebook -------------------------------
-router.route('/unlink/facebook')
-  .get(userController.unlinkFacebook);
-
-// twitter --------------------------------
-router.route('/unlink/twitter')
-  .get(userController.unlinkTwitter);
-
-// google ---------------------------------
-router.route('/unlink/google')
-  .get(userController.unlinkGoogle);
 
 module.exports = router;
 

@@ -1,0 +1,20 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "p2my",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "test": {
+    "username": "b782883da49b34",
+    "password": "ff3c4ecd",
+    "database": "heroku_2091d73f3ac7bed",
+    "host": "us-cdbr-iron-east-01.cleardb.net",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
